@@ -26,7 +26,6 @@
 		33C43E5627BA784A0077F01C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C43E5527BA784A0077F01C /* HistoryViewModel.swift */; };
 		33C43E5827BA799D0077F01C /* Common+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C43E5727BA799D0077F01C /* Common+Extensions.swift */; };
 		33E7633426A3F0EA00C112E8 /* RunMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7633326A3F0EA00C112E8 /* RunMateApp.swift */; };
-		33E7633626A3F0EA00C112E8 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7633526A3F0EA00C112E8 /* LandingView.swift */; };
 		33E7633826A3F0EB00C112E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E7633726A3F0EB00C112E8 /* Assets.xcassets */; };
 		33E7633B26A3F0EB00C112E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33E7633A26A3F0EB00C112E8 /* Preview Assets.xcassets */; };
 		33E7634526A3F0EC00C112E8 /* RunMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7634426A3F0EC00C112E8 /* RunMateTests.swift */; };
@@ -74,7 +73,6 @@
 		33C43E5727BA799D0077F01C /* Common+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Common+Extensions.swift"; sourceTree = "<group>"; };
 		33E7633026A3F0EA00C112E8 /* RunMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E7633326A3F0EA00C112E8 /* RunMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMateApp.swift; sourceTree = "<group>"; };
-		33E7633526A3F0EA00C112E8 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		33E7633726A3F0EB00C112E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33E7633A26A3F0EB00C112E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33E7634026A3F0EC00C112E8 /* RunMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +113,7 @@
 		3369523127AA980C00379B2C /* StartRun */ = {
 			isa = PBXGroup;
 			children = (
+				3369523827AA9E2900379B2C /* RunCountDownView.swift */,
 				33E7635F26A3F88700C112E8 /* RunView.swift */,
 				33E7636226A3F93200C112E8 /* RunViewModel.swift */,
 			);
@@ -130,13 +129,20 @@
 			path = AppRoot;
 			sourceTree = "<group>";
 		};
-		3369523727AA9DFF00379B2C /* Run */ = {
+		3369523727AA9DFF00379B2C /* RunInProgress */ = {
 			isa = PBXGroup;
 			children = (
 				3379A12627B13E88003C92CD /* InProgress */,
-				3369523827AA9E2900379B2C /* RunCountDownView.swift */,
 			);
-			path = Run;
+			path = RunInProgress;
+			sourceTree = "<group>";
+		};
+		336D577C27D4D27800903279 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				33E7633726A3F0EB00C112E8 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3379A12627B13E88003C92CD /* InProgress */ = {
@@ -212,11 +218,9 @@
 				33E7635B26A3F13600C112E8 /* Services */,
 				337F6E4B27B34A5F000003E1 /* UtilitiesAndExtensions */,
 				33C43E4D27BA739C0077F01C /* Models */,
-				33E7633326A3F0EA00C112E8 /* RunMateApp.swift */,
-				33E7633526A3F0EA00C112E8 /* LandingView.swift */,
-				33E7633726A3F0EB00C112E8 /* Assets.xcassets */,
-				33E7635E26A3F80100C112E8 /* Info.plist */,
+				336D577C27D4D27800903279 /* Resources */,
 				33E7633926A3F0EB00C112E8 /* Preview Content */,
+				33E7635E26A3F80100C112E8 /* Info.plist */,
 			);
 			path = RunMate;
 			sourceTree = "<group>";
@@ -260,9 +264,10 @@
 		33E7636126A3F89100C112E8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				33E7633326A3F0EA00C112E8 /* RunMateApp.swift */,
 				3369523227AA982000379B2C /* AppRoot */,
 				3369523127AA980C00379B2C /* StartRun */,
-				3369523727AA9DFF00379B2C /* Run */,
+				3369523727AA9DFF00379B2C /* RunInProgress */,
 				33C43E5227BA78230077F01C /* History */,
 				337CC4F427AE7C33007E3FCD /* ViewsLibrary */,
 			);
@@ -406,7 +411,6 @@
 				3369523427AA983700379B2C /* AppRootView.swift in Sources */,
 				33E7636026A3F88700C112E8 /* RunView.swift in Sources */,
 				337CC4F627AE7C7A007E3FCD /* CircularGradientView.swift in Sources */,
-				33E7633626A3F0EA00C112E8 /* LandingView.swift in Sources */,
 				33C43E5827BA799D0077F01C /* Common+Extensions.swift in Sources */,
 				3369523627AA984600379B2C /* AppRouter.swift in Sources */,
 				33887D0B26C6937600A6CA43 /* LocationPermissionService.swift in Sources */,

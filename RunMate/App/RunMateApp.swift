@@ -11,7 +11,8 @@ import SwiftUI
 struct RunMateApp: App {
     var body: some Scene {
         WindowGroup {
-            LandingView()
+            AppRootView()
+                .ignoresSafeArea(.all, edges: [.top])
         }
     }
 }
