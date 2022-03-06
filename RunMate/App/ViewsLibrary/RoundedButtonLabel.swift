@@ -1,13 +1,13 @@
 import SwiftUI
 
 enum ButtonStyle {
-    case primary
+    case success
     case secondary
     case alert
 
     var bgColor: Color {
         switch self {
-        case .primary: return Color.green
+        case .success: return Color.green
         case .secondary: return Color.secondary
         case .alert: return Color.red
         }

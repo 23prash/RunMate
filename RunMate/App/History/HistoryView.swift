@@ -30,17 +30,23 @@ struct RunHistoryCell: View {
 }
 
 struct RunHistoryView: View {
-    let viewModel: HistoryViewModel
+    @ObservedObject private var viewModel: HistoryViewModel
     init(viewModel: HistoryViewModel) {
         self.viewModel = viewModel
     }
     @EnvironmentObject var router: AppRouter
 
     var body: some View {
-        VStack {
-            List(viewModel.runs) { run in
-                RunHistoryCell(run: run)
-            }
+        NavigationView {
+            List {
+                ForEach(viewModel.runs, id: \.self) { run in
+                    RunHistoryCell(run: run)
+                }.onDelete(perform: delete(at:))
+            }.navigationTitle("History")
         }
+    }
+
+    func delete(at indices: IndexSet) {
+        viewModel.deleteRun(at: indices)
     }
 }

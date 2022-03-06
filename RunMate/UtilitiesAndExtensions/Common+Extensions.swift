@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension TimeInterval{
 
@@ -29,4 +30,9 @@ struct RunDateFormatter {
         formatter.dateStyle = .medium
         return formatter
     }
+}
+
+extension CLAuthorizationStatus {
+    var 👍: Bool { self == .authorizedAlways || self == .authorizedWhenInUse }
+    var 👎: Bool { !👍 }
 }

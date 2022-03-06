@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RunModel: Identifiable {
+struct RunModel: Identifiable, Hashable {
     var id: Date
     let date: String
     let time: String
@@ -21,13 +21,19 @@ struct RunModel: Identifiable {
     }
 }
 
-final class HistoryViewModel {
+final class HistoryViewModel: ObservableObject {
     let dataService: RunDataService
     init(service: RunDataService = .init()) {
         dataService = service
         runs = dataService
             .getAll()
-            .map({RunModel(run: $0)})
+            .map({ RunModel(run: $0) })
     }
     @Published var runs: [RunModel]
+
+    func deleteRun(at indices: IndexSet) {
+        runs = dataService
+            .deleteRuns(at: indices)
+            .map({ .init(run: $0) })
+    }
 }

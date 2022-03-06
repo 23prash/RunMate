@@ -11,6 +11,8 @@
 		3369523427AA983700379B2C /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369523327AA983700379B2C /* AppRootView.swift */; };
 		3369523627AA984600379B2C /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369523527AA984600379B2C /* AppRouter.swift */; };
 		3369523927AA9E2900379B2C /* RunCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369523827AA9E2900379B2C /* RunCountDownView.swift */; };
+		336D577927D4BA8400903279 /* MilageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336D577827D4BA8400903279 /* MilageService.swift */; };
+		336D577B27D4C6D800903279 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336D577A27D4C6D800903279 /* TimeService.swift */; };
 		3379A12527B13E71003C92CD /* RunInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3379A12427B13E71003C92CD /* RunInProgressViewModel.swift */; };
 		337CC4F627AE7C7A007E3FCD /* CircularGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CC4F527AE7C7A007E3FCD /* CircularGradientView.swift */; };
 		337CC4FA27AE806A007E3FCD /* RunInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CC4F927AE806A007E3FCD /* RunInProgressView.swift */; };
@@ -56,6 +58,8 @@
 		3369523327AA983700379B2C /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
 		3369523527AA984600379B2C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		3369523827AA9E2900379B2C /* RunCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCountDownView.swift; sourceTree = "<group>"; };
+		336D577827D4BA8400903279 /* MilageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilageService.swift; sourceTree = "<group>"; };
+		336D577A27D4C6D800903279 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		3379A12427B13E71003C92CD /* RunInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunInProgressViewModel.swift; sourceTree = "<group>"; };
 		337CC4F527AE7C7A007E3FCD /* CircularGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGradientView.swift; sourceTree = "<group>"; };
 		337CC4F927AE806A007E3FCD /* RunInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunInProgressView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				33E7635C26A3F15200C112E8 /* LocationService.swift */,
 				33887D0A26C6937600A6CA43 /* LocationPermissionService.swift */,
 				33C43E5027BA74E30077F01C /* RunDataService.swift */,
+				336D577827D4BA8400903279 /* MilageService.swift */,
+				336D577A27D4C6D800903279 /* TimeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				336D577B27D4C6D800903279 /* TimeService.swift in Sources */,
 				337F6E4F27B3C5EB000003E1 /* SFSymbolImage.swift in Sources */,
 				33C43E5127BA74E30077F01C /* RunDataService.swift in Sources */,
 				33E7636326A3F93200C112E8 /* RunViewModel.swift in Sources */,
@@ -407,6 +414,7 @@
 				3379A12527B13E71003C92CD /* RunInProgressViewModel.swift in Sources */,
 				337CC4FA27AE806A007E3FCD /* RunInProgressView.swift in Sources */,
 				33C43E5427BA783C0077F01C /* HistoryView.swift in Sources */,
+				336D577927D4BA8400903279 /* MilageService.swift in Sources */,
 				337CC4FC27AE83E2007E3FCD /* AnimateableFontModifier.swift in Sources */,
 				337CC4FE27AE88E4007E3FCD /* ScaleAnimatableTextView.swift in Sources */,
 				33C43E5627BA784A0077F01C /* HistoryViewModel.swift in Sources */,

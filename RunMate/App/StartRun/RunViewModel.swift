@@ -19,6 +19,7 @@ final class RunViewModel: ObservableObject {
     private var disposeBag = Set<AnyCancellable>()
     
     func startRun(router: AppRouter) {
+        locationService.stop()
         router.go(to: .runCountdown, in: .none)
     }
     
@@ -31,7 +32,7 @@ final class RunViewModel: ObservableObject {
                     return
                 }
                 self.enableStartButton = true
-                try? self.locationService.start(withAuthStatus: .grantedPermission)
+                try? self.locationService.start()
                     .sink { location in
                         guard let coordinate = location?.coordinate else { return }
                         self.locationRegion = .init(center: coordinate,

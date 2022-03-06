@@ -35,4 +35,12 @@ final class RunDataService {
         }
         return []
     }
+
+    @discardableResult
+    func deleteRuns(at indices: IndexSet) -> [Run] {
+        var runs = getAll()
+        runs.remove(atOffsets: indices)
+        save(runs: runs)
+        return runs
+    }
 }

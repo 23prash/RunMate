@@ -8,8 +8,7 @@
 import Foundation
 
 struct Run: Codable {
-    // In meters
-    let distance: Float
+    let distance: Double
     let start: Date
     let time: TimeInterval
 }

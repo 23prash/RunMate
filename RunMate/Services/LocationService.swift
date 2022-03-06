@@ -13,21 +13,41 @@ enum LocationServiceError: Error {
     case notAuthorised
 }
 
-final class LocationService: NSObject {
+protocol LocationServiceProtocol {
+    func onLocationUpdate() -> AnyPublisher<CLLocation?, Never>
+    func start() throws -> AnyPublisher<CLLocation?, Never>
+    func stop()
+    func pause(_ pause: Bool)
+}
+
+final class LocationService: NSObject, LocationServiceProtocol {
     
     private var currentLocationSubject: CurrentValueSubject<CLLocation?, Never> = .init(nil)
     private lazy var locationManager = CLLocationManager()
 
-    // todo: ref
-    func start(withAuthStatus status: LocationPermissionStatus) throws -> AnyPublisher<CLLocation?, Never> {
-        guard status == .grantedPermission else { throw LocationServiceError.notAuthorised }
+    func start() throws -> AnyPublisher<CLLocation?, Never> {
+        guard locationManager.authorizationStatus.👍 else { throw LocationServiceError.notAuthorised }
         setUpLocationManager()
         return currentLocationSubject.eraseToAnyPublisher()
     }
 
+    func pause(_ pause: Bool) {
+        if pause {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+        } else {
+            locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+        }
+    }
+
     func stop() {
-        locationManager.stopUpdatingLocation()
-        locationManager.delegate = nil
+        pause(true)
+        currentLocationSubject.send(completion: .finished)
+    }
+
+    func onLocationUpdate() -> AnyPublisher<CLLocation?, Never> {
+        return currentLocationSubject.eraseToAnyPublisher()
     }
 
     private func setUpLocationManager() {
@@ -49,4 +69,3 @@ extension LocationService: CLLocationManagerDelegate {
         }
     }
 }
-

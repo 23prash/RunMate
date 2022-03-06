@@ -60,60 +60,67 @@ final class RunInProgressViewModel: ObservableObject {
                                       on: .main,
                                       in: .common).autoconnect()
 
-    private let locationService = LocationService()
+    private let locationService: LocationServiceProtocol
+    private let milageService: MilageServiceProtocol
+    private let timerService: TimerProtocol
     private var latestLocation: CLLocation?
     private var disposeBag = Set<AnyCancellable>()
     private var startDate: Date?
-    private var distance3SecAgo: Float = 0.0
-    private var currentRunMilage: Float = 0.0 {
+    private var distance3SecAgo: Double = 0.0
+    private var currentRunMilage: Double = 0.0 {
         didSet {
             distance = String(format: "%0.2f", currentRunMilage/1000)
         }
     }
 
+    init(locationService: LocationServiceProtocol = LocationService(),
+         timerService: TimerProtocol = RMTimer()) {
+        self.locationService = locationService
+        self.timerService = timerService
+        self.milageService = MilageService(locationService: locationService)
+    }
+
     func start() throws {
         startDate = .init()
-        timer.sink { [weak self] _ in
-            guard let self = self, !self.paused else { return }
+        timerService.start()
+            .sink { [weak self] in
+            guard let self = self else { return }
             self.secs += 1
             self.time = self.secs.stringFromTimeInterval()
             if self.secs.truncatingRemainder(dividingBy: 3) == 0 {
                 let distanceInKm = (self.currentRunMilage - self.distance3SecAgo)/1000
-                let mins: Float = 3.0/60.0
+                let mins: Double = 3.0/60.0
                 self.currentPace = String(format: "%0.2f", mins/distanceInKm)
                 self.distance3SecAgo = self.currentRunMilage
             }
         }.store(in: &disposeBag)
 
-        try locationService.start(withAuthStatus: .grantedPermission)
-            .sink { [weak self] location in
-                guard let self = self else { return }
-                guard !self.paused else { self.latestLocation = location; return }
-                guard let lastLocation = self.latestLocation else { self.latestLocation = location; return }
-
-                let distance = location?.distance(from: lastLocation)
-                self.currentRunMilage += Float(distance?.magnitude ?? 0)
-                self.latestLocation = location
-
-                let mins: Float = Float(self.secs/60)
+        milageService
+            .onMilageUpdate()
+            .sink { milage in
+                self.currentRunMilage = milage
+                let mins: Double = Double(self.secs/60)
                 let distanceInKm = self.currentRunMilage/1000
                 if distanceInKm != 0 {
                     self.pace = String(format: "%0.2f", mins/distanceInKm)
                 }
-
-                os_log(.debug, "Location update recieved: Milage is \(self.currentRunMilage))")
             }.store(in: &disposeBag)
     }
 
     func pause() {
         paused = true
+        timerService.pause(true)
+        locationService.pause(true)
     }
 
     func `continue`() {
         paused = false
+        timerService.pause(false)
+        locationService.pause(true)
     }
 
     func finish(router: AppRouter) {
+        locationService.stop()
         RunDataService().save(run: .init(distance: currentRunMilage, start: startDate ?? Date(), time: secs))
         router.go(to: .history, in: .history)
     }

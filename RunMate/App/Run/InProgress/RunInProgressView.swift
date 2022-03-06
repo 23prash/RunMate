@@ -78,7 +78,7 @@ struct RunInProgressView: View {
                 viewModel.finish(router: router)
             }
         } label: {
-            RoundedButtonLabel(title: "🏁", style: .alert)
+            RoundedButtonLabel(title: "🏁", style: .success)
         }
     }
 
