@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 import Combine
 import OSLog
+import SwiftUI
 
 enum Measurement {
     case distance(Float)
@@ -62,11 +63,12 @@ final class RunInProgressViewModel: ObservableObject {
 
     private let locationService: LocationServiceProtocol
     private let milageService: MilageServiceProtocol
+    private let paceService: PaceService
     private let timerService: TimerProtocol
     private var latestLocation: CLLocation?
     private var disposeBag = Set<AnyCancellable>()
     private var startDate: Date?
-    private var distance3SecAgo: Double = 0.0
+    private var locations: [CLLocation] = []
     private var currentRunMilage: Double = 0.0 {
         didSet {
             distance = String(format: "%0.2f", currentRunMilage/1000)
@@ -78,50 +80,77 @@ final class RunInProgressViewModel: ObservableObject {
         self.locationService = locationService
         self.timerService = timerService
         self.milageService = MilageService(locationService: locationService)
+        paceService = PaceService(locationSevice: locationService)
     }
 
     func start() throws {
         startDate = .init()
         timerService.start()
-            .sink { [weak self] in
-            guard let self = self else { return }
-            self.secs += 1
-            self.time = self.secs.stringFromTimeInterval()
-            if self.secs.truncatingRemainder(dividingBy: 3) == 0 {
-                let distanceInKm = (self.currentRunMilage - self.distance3SecAgo)/1000
-                let mins: Double = 3.0/60.0
-                self.currentPace = String(format: "%0.2f", mins/distanceInKm)
-                self.distance3SecAgo = self.currentRunMilage
-            }
-        }.store(in: &disposeBag)
+            .map({ timeInSec in timeInSec.stringFromTimeInterval() })
+            .assign(to: \.time, on: self)
+            .store(in: &disposeBag)
 
-        milageService
-            .onMilageUpdate()
-            .sink { milage in
-                self.currentRunMilage = milage
-                let mins: Double = Double(self.secs/60)
-                let distanceInKm = self.currentRunMilage/1000
-                if distanceInKm != 0 {
-                    self.pace = String(format: "%0.2f", mins/distanceInKm)
-                }
-            }.store(in: &disposeBag)
+        timerService.atTimeInterval()
+            .combineLatest(try milageService.start())
+            .map({ time, milage in
+                return (meters: milage, avgPace: Calculations.avgPace(distance: milage, timeInterval: time))
+            }).sink(receiveValue: { (meters: Double, avgPace: Double) in
+                self.pace = String(format: "%0.2f", avgPace)
+                self.distance = String(format: "%0.2f", meters/1000)
+            }).store(in: &disposeBag)
+
+        paceService.$pace
+            .map({ value in String(format: "%0.2f", value)})
+            .assign(to: \.currentPace, on: self)
+            .store(in: &disposeBag)
     }
 
-    func pause() {
-        paused = true
-        timerService.pause(true)
-        locationService.pause(true)
+    func pausePlay() {
+        paused.toggle()
+        timerService.pause(paused)
+        milageService.pause(paused)
     }
 
     func `continue`() {
         paused = false
         timerService.pause(false)
-        locationService.pause(true)
+        milageService.pause(false)
     }
 
     func finish(router: AppRouter) {
         locationService.stop()
         RunDataService().save(run: .init(distance: currentRunMilage, start: startDate ?? Date(), time: secs))
         router.go(to: .history, in: .history)
+    }
+
+    private func saveLocations() {
+        let locs = locations.map({ return (lat: $0.coordinate.latitude, long: $0.coordinate.longitude) })
+        let file = "run_file.txt"
+        //save
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = URL(fileURLWithPath: "myFile", relativeTo: directoryURL)
+    }
+}
+
+struct Calculations {
+    static func avgPace(distance meters: Double, timeInterval: TimeInterval) -> Double {
+        let distanceInKm = meters/1000
+        let mins: Double = timeInterval/60.0
+        return mins/distanceInKm
+    }
+    /**
+     Creates a personalized greeting for a recipient.
+
+     - Parameter speed: Speed in meters/second
+     */
+    static func paceFromSpeed(_ speed: Double) -> Double {
+        return speed * 16.6666667
+    }
+    static func avg(_ values: [Double]) -> Double {
+        var result: Double = 0
+        values.forEach { value in
+            result += value
+        }
+        return (values.isEmpty ? 0 : result/Double(values.count))
     }
 }

@@ -19,6 +19,7 @@ struct RunInProgressView: View {
         VStack {
             Text(viewModel.time)
                 .font(.largeTitle)
+                .padding()
             Text("Time")
                 .font(.footnote)
         }
@@ -28,6 +29,7 @@ struct RunInProgressView: View {
         VStack {
             Text(viewModel.distance)
                 .font(.largeTitle)
+                .padding()
             Text("Distance")
                 .font(.footnote)
         }
@@ -37,6 +39,7 @@ struct RunInProgressView: View {
         VStack {
             Text(viewModel.pace)
                 .font(.largeTitle)
+                .padding()
             Text("Avg Pace(mins/km)")
                 .font(.footnote)
         }
@@ -46,6 +49,7 @@ struct RunInProgressView: View {
         VStack {
             Text(viewModel.currentPace)
                 .font(.largeTitle)
+                .padding()
             Text("Pace(mins/km)")
                 .font(.footnote)
         }
@@ -54,21 +58,12 @@ struct RunInProgressView: View {
     private var pauseButton: some View {
         Button  {
             withAnimation {
-                viewModel.pause()
+                viewModel.pausePlay()
             }
         } label: {
-            RoundedButtonImage(title: .pause, style: .secondary)
-
-        }
-    }
-
-    private var playButton: some View {
-        Button  {
-            withAnimation {
-                viewModel.continue()
-            }
-        } label: {
-            RoundedButtonImage(title: .play, style: .secondary)
+            RoundedButtonImage(title: viewModel.paused ? .play : .pause,
+                               subtitle: viewModel.paused ? "Resume" : "Pause",
+                               style: .secondary)
         }
     }
 
@@ -78,33 +73,23 @@ struct RunInProgressView: View {
                 viewModel.finish(router: router)
             }
         } label: {
-            RoundedButtonLabel(title: "🏁", style: .success)
+            RoundedButtonLabel(title: "🏁", subtitle: "Finish", style: .success)
         }
     }
 
     var body: some View {
         VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Spacer()
-                timeView
-                Spacer()
-                distanceView
-                Spacer()
-                Spacer()
-            }
-
-            Spacer()
+            timeView
+                .wrappedInDividers()
+            distanceView
+                .wrappedInDividers(on: [.bottom])
 
             HStack {
-                Spacer()
                 paceView
-                Spacer()
-                Spacer()
+                    .padding(.horizontal, 16)
                 currentPaceView
-                Spacer()
-            }
+                    .padding(.horizontal, 16)
+            }.wrappedInDividers(on: [.bottom])
 
             Spacer()
 
@@ -113,19 +98,14 @@ struct RunInProgressView: View {
                 pauseButton
                 if viewModel.paused {
                     Spacer()
-                    playButton
-                        .transition(.move(edge: .trailing))
-                    Spacer()
                     finishButton
                         .transition(.move(edge: .trailing))
-                    Spacer()
                 }
                 Spacer()
             }
-
-            Spacer()
-        }
+        }.padding([.top], 32)
     }
+
 }
 
 struct RunInProgressView_Previews: PreviewProvider {

@@ -32,6 +32,7 @@ struct RunView: View {
                     viewModel.startRun(router: router)
                 } label: {
                     RoundedButtonLabel(title: "Start",
+                                       subtitle: nil,
                                        style: .success)
                 }.disabled(!viewModel.enableStartButton)
                 .padding()
