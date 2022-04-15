@@ -97,6 +97,7 @@ final class RunInProgressViewModel: ObservableObject {
             }).sink(receiveValue: { (meters: Double, avgPace: Double) in
                 self.pace = String(format: "%0.2f", avgPace)
                 self.distance = String(format: "%0.2f", meters/1000)
+                self.currentRunMilage = meters
             }).store(in: &disposeBag)
 
         paceService.$pace

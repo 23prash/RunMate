@@ -29,7 +29,7 @@ struct RoundedButtonLabel: View {
                     .font(.caption2)
             }
         }.padding()
-            .frame(width: 80, height: 80, alignment: .center)
+            .frame(width: 100, height: 100, alignment: .center)
             .background(style.bgColor)
             .foregroundColor(Color.white)
             .clipShape(Circle())
@@ -52,7 +52,7 @@ struct RoundedButtonImage: View {
                     .font(.caption2)
             }
         }.padding()
-            .frame(width: 80, height: 80, alignment: .center)
+            .frame(width: 100, height: 100, alignment: .center)
             .background(style.bgColor)
             .foregroundColor(Color.white)
             .clipShape(Circle())
