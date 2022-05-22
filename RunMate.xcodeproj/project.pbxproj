@@ -21,6 +21,15 @@
 		337CC4FE27AE88E4007E3FCD /* ScaleAnimatableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337CC4FD27AE88E4007E3FCD /* ScaleAnimatableTextView.swift */; };
 		337F6E4F27B3C5EB000003E1 /* SFSymbolImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337F6E4E27B3C5EB000003E1 /* SFSymbolImage.swift */; };
 		33887D0B26C6937600A6CA43 /* LocationPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33887D0A26C6937600A6CA43 /* LocationPermissionService.swift */; };
+		33AC6A1E280A71EF0095CD1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33AC6A1D280A71EF0095CD1B /* GoogleService-Info.plist */; };
+		33AC6A21280A76EF0095CD1B /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC6A20280A76EF0095CD1B /* LandingView.swift */; };
+		33AC6A23280A78DD0095CD1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC6A22280A78DD0095CD1B /* SignInView.swift */; };
+		33AC6A25280A78F10095CD1B /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC6A24280A78F10095CD1B /* SignupView.swift */; };
+		33AC6A27280A796B0095CD1B /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC6A26280A796B0095CD1B /* Screen.swift */; };
+		33AC6A29280A7DC40095CD1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AC6A28280A7DC40095CD1B /* Constants.swift */; };
+		33B183292838BDEC00BC12A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 33B183282838BDEC00BC12A9 /* FirebaseAuth */; };
+		33B1832B2838C3E500BC12A9 /* FullScreenLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B1832A2838C3E500BC12A9 /* FullScreenLoader.swift */; };
+		33B1832D2839DDEF00BC12A9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B1832C2839DDEE00BC12A9 /* TextField.swift */; };
 		33C43E4F27BA73BB0077F01C /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C43E4E27BA73BB0077F01C /* Run.swift */; };
 		33C43E5127BA74E30077F01C /* RunDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C43E5027BA74E30077F01C /* RunDataService.swift */; };
 		33C43E5427BA783C0077F01C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C43E5327BA783C0077F01C /* HistoryView.swift */; };
@@ -68,6 +77,14 @@
 		337CC4FD27AE88E4007E3FCD /* ScaleAnimatableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAnimatableTextView.swift; sourceTree = "<group>"; };
 		337F6E4E27B3C5EB000003E1 /* SFSymbolImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolImage.swift; sourceTree = "<group>"; };
 		33887D0A26C6937600A6CA43 /* LocationPermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionService.swift; sourceTree = "<group>"; };
+		33AC6A1D280A71EF0095CD1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		33AC6A20280A76EF0095CD1B /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		33AC6A22280A78DD0095CD1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		33AC6A24280A78F10095CD1B /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		33AC6A26280A796B0095CD1B /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		33AC6A28280A7DC40095CD1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		33B1832A2838C3E500BC12A9 /* FullScreenLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoader.swift; sourceTree = "<group>"; };
+		33B1832C2839DDEE00BC12A9 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		33C43E4E27BA73BB0077F01C /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		33C43E5027BA74E30077F01C /* RunDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDataService.swift; sourceTree = "<group>"; };
 		33C43E5327BA783C0077F01C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -92,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33B183292838BDEC00BC12A9 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +145,7 @@
 			children = (
 				3369523327AA983700379B2C /* AppRootView.swift */,
 				3369523527AA984600379B2C /* AppRouter.swift */,
+				33AC6A26280A796B0095CD1B /* Screen.swift */,
 			);
 			path = AppRoot;
 			sourceTree = "<group>";
@@ -156,16 +175,37 @@
 				337CC4FD27AE88E4007E3FCD /* ScaleAnimatableTextView.swift */,
 				3314CF6827B284F1000032C4 /* RoundedButtonLabel.swift */,
 				337F6E4E27B3C5EB000003E1 /* SFSymbolImage.swift */,
+				33B1832A2838C3E500BC12A9 /* FullScreenLoader.swift */,
+				33B1832C2839DDEE00BC12A9 /* TextField.swift */,
 			);
 			path = ViewsLibrary;
 			sourceTree = "<group>";
 		};
-		337F6E4B27B34A5F000003E1 /* UtilitiesAndExtensions */ = {
+		337F6E4B27B34A5F000003E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				33C43E5727BA799D0077F01C /* Common+Extensions.swift */,
+				33AC6A28280A7DC40095CD1B /* Constants.swift */,
 			);
-			path = UtilitiesAndExtensions;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		33AC6A1F280A72150095CD1B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				33AC6A20280A76EF0095CD1B /* LandingView.swift */,
+				33AC6A22280A78DD0095CD1B /* SignInView.swift */,
+				33AC6A24280A78F10095CD1B /* SignupView.swift */,
+				33AC6A1D280A71EF0095CD1B /* GoogleService-Info.plist */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		33B183272838BDEC00BC12A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		33C43E4D27BA739C0077F01C /* Models */ = {
@@ -192,6 +232,7 @@
 				33E7634326A3F0EC00C112E8 /* RunMateTests */,
 				33E7634D26A3F0EC00C112E8 /* RunMateUITests */,
 				33E7633126A3F0EA00C112E8 /* Products */,
+				33B183272838BDEC00BC12A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,9 +249,10 @@
 		33E7633226A3F0EA00C112E8 /* RunMate */ = {
 			isa = PBXGroup;
 			children = (
+				33AC6A1F280A72150095CD1B /* Auth */,
 				33E7636126A3F89100C112E8 /* App */,
 				33E7635B26A3F13600C112E8 /* Services */,
-				337F6E4B27B34A5F000003E1 /* UtilitiesAndExtensions */,
+				337F6E4B27B34A5F000003E1 /* Common */,
 				33C43E4D27BA739C0077F01C /* Models */,
 				336D577C27D4D27800903279 /* Resources */,
 				33E7633926A3F0EB00C112E8 /* Preview Content */,
@@ -285,6 +327,9 @@
 			dependencies = (
 			);
 			name = RunMate;
+			packageProductDependencies = (
+				33B183282838BDEC00BC12A9 /* FirebaseAuth */,
+			);
 			productName = RunMate;
 			productReference = 33E7633026A3F0EA00C112E8 /* RunMate.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +402,9 @@
 				Base,
 			);
 			mainGroup = 33E7632726A3F0EA00C112E8;
+			packageReferences = (
+				33B183242838BDAE00BC12A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 33E7633126A3F0EA00C112E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -375,6 +423,7 @@
 			files = (
 				33E7633B26A3F0EB00C112E8 /* Preview Assets.xcassets in Resources */,
 				33E7633826A3F0EB00C112E8 /* Assets.xcassets in Resources */,
+				33AC6A1E280A71EF0095CD1B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,15 +451,20 @@
 				336D577B27D4C6D800903279 /* TimeService.swift in Sources */,
 				337F6E4F27B3C5EB000003E1 /* SFSymbolImage.swift in Sources */,
 				33C43E5127BA74E30077F01C /* RunDataService.swift in Sources */,
+				33B1832D2839DDEF00BC12A9 /* TextField.swift in Sources */,
 				33E7636326A3F93200C112E8 /* RunViewModel.swift in Sources */,
 				3369523427AA983700379B2C /* AppRootView.swift in Sources */,
+				33AC6A27280A796B0095CD1B /* Screen.swift in Sources */,
 				33E7636026A3F88700C112E8 /* RunView.swift in Sources */,
 				337CC4F627AE7C7A007E3FCD /* CircularGradientView.swift in Sources */,
 				33C43E5827BA799D0077F01C /* Common+Extensions.swift in Sources */,
 				336D578727DE0C4200903279 /* PaceService.swift in Sources */,
+				33AC6A23280A78DD0095CD1B /* SignInView.swift in Sources */,
+				33AC6A29280A7DC40095CD1B /* Constants.swift in Sources */,
 				3369523627AA984600379B2C /* AppRouter.swift in Sources */,
 				33887D0B26C6937600A6CA43 /* LocationPermissionService.swift in Sources */,
 				3369523927AA9E2900379B2C /* RunCountDownView.swift in Sources */,
+				33AC6A21280A76EF0095CD1B /* LandingView.swift in Sources */,
 				3379A12527B13E71003C92CD /* RunInProgressViewModel.swift in Sources */,
 				337CC4FA27AE806A007E3FCD /* RunInProgressView.swift in Sources */,
 				33C43E5427BA783C0077F01C /* HistoryView.swift in Sources */,
@@ -420,7 +474,9 @@
 				33C43E5627BA784A0077F01C /* HistoryViewModel.swift in Sources */,
 				33E7635D26A3F15200C112E8 /* LocationService.swift in Sources */,
 				3314CF6927B284F1000032C4 /* RoundedButtonLabel.swift in Sources */,
+				33B1832B2838C3E500BC12A9 /* FullScreenLoader.swift in Sources */,
 				33C43E4F27BA73BB0077F01C /* Run.swift in Sources */,
+				33AC6A25280A78F10095CD1B /* SignupView.swift in Sources */,
 				33E7633426A3F0EA00C112E8 /* RunMateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +634,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
@@ -588,9 +645,11 @@
 				INFOPLIST_KEY_CFBundleExecutable = RunMate;
 				INFOPLIST_KEY_CFBundleName = RunMate;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow $(PRODUCT_NAME) to access your location for the run";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -598,8 +657,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pachu.RunMate;
+				MARKETING_VERSION = 0.99;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prashpukale.RunMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -612,6 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
@@ -622,9 +682,11 @@
 				INFOPLIST_KEY_CFBundleExecutable = RunMate;
 				INFOPLIST_KEY_CFBundleName = RunMate;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow $(PRODUCT_NAME) to access your location for the run";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -632,8 +694,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pachu.RunMate;
+				MARKETING_VERSION = 0.99;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prashpukale.RunMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -777,6 +839,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33B183242838BDAE00BC12A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		33B183282838BDEC00BC12A9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33B183242838BDAE00BC12A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33E7632826A3F0EA00C112E8 /* Project object */;
 }

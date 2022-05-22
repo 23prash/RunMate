@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import SwiftUI
 
-extension TimeInterval{
+extension TimeInterval {
 
     func stringFromTimeInterval() -> String {
 
@@ -72,5 +72,38 @@ struct WrapInDividers: ViewModifier {
 extension View {
     func wrappedInDividers(on edges: Edge.Set = [.vertical]) -> some View {
         return modifier(WrapInDividers(edges))
+    }
+}
+
+extension String {
+    func isValid(inputType: TextInputType) -> Bool {
+        switch inputType {
+        case .email:
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            return emailPred.evaluate(with: self)
+        case .name:
+            return self.count >= 2
+        case .password:
+            return self.count >= 10
+        case let .plainText(required):
+            return required ? !self.isEmpty : true
+        }
+    }
+}
+
+enum TextInputType {
+    case email
+    case name
+    case password
+    case plainText(required: Bool)
+
+    var isSecure: Bool {
+        switch self {
+        case .email, .name, .plainText:
+            return false
+        case .password:
+            return true
+        }
     }
 }

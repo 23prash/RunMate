@@ -59,3 +59,45 @@ struct RoundedButtonImage: View {
             .shadow(radius: 5.0)
     }
 }
+
+struct ActionButtonLabel: View {
+
+    enum `Type` {
+        case primary
+        case secondary
+    }
+    private let title: String
+    private let type: Type
+    init(title: String,
+         type: Type) {
+        self.type = type
+        self.title = title
+    }
+
+    private var bgColor: Color {
+        switch type {
+        case .primary:
+            return Color.brandColor
+        case .secondary:
+            return Color.secondary
+        }
+    }
+
+    private var fgColor: Color {
+        switch type {
+        case .primary:
+            return Color.white
+        case .secondary:
+            return Color.white
+        }
+    }
+
+    var body: some View {
+        Text(title)
+            .padding([.horizontal], 100)
+            .padding([.vertical], 16)
+            .background(bgColor)
+            .foregroundColor(fgColor)
+            .cornerRadius(10)
+    }
+}

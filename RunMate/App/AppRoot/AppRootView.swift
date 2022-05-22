@@ -1,40 +1,30 @@
 import Foundation
 import SwiftUI
+import FirebaseAuth
+import Firebase
 
 struct AppRootView: View {
     @StateObject var router: AppRouter = .init()
-
-    private var tabView: some View {
-        TabView {
-            router
-                .config
-                .viewInStartTab
-                .environmentObject(router)
-                .tabItem {
-                    Text("🏃")
-                }.ignoresSafeArea(.all, edges: .top)
-
-            router
-                .config
-                .viewInHistory
-                .environmentObject(router)
-                .tabItem {
-                    Text("History")
-                }.ignoresSafeArea(.all, edges: .top)
-        }
-    }
-
     var body: some View {
-        if let fullScreenView = router.config.viewInFullScreen {
-            ZStack {
-                tabView
-                    .hidden()
-
-                fullScreenView
+        switch router.config {
+        case let .tab(runView, historyView):
+            return AnyView(TabView {
+                runView
                     .environmentObject(router)
-            }
-        } else {
-            tabView
+                    .tabItem {
+                        Text("🏃")
+                    }.ignoresSafeArea(.all, edges: .top)
+
+                historyView
+                    .environmentObject(router)
+                    .tabItem {
+                        Text("🏃")
+                    }.ignoresSafeArea(.all, edges: .top)
+            })
+        case let .fullScreen(view):
+            return AnyView(view
+                .environmentObject(router)
+                .ignoresSafeArea())
         }
     }
 }
