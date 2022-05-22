@@ -1,15 +1,26 @@
 import SwiftUI
 
 enum ButtonStyle {
-    case success
+    case primary
     case secondary
+    case tertiary
     case alert
 
     var bgColor: Color {
         switch self {
-        case .success: return Color(red: 75/255, green: 191/255, blue: 68/255)
+        case .primary: return Color(red: 75/255, green: 191/255, blue: 68/255)
         case .secondary: return Color.secondary
         case .alert: return Color.red
+        case .tertiary: return .clear
+        }
+    }
+
+    var borderColor: Color {
+        switch self {
+        case .primary: return .clear
+        case .secondary: return .clear
+        case .alert: return .clear
+        case .tertiary: return .brandColor
         }
     }
 }
@@ -29,10 +40,11 @@ struct RoundedButtonLabel: View {
                     .font(.caption2)
             }
         }.padding()
-            .frame(width: 100, height: 100, alignment: .center)
+            .frame(width: 60, height: 60, alignment: .center)
             .background(style.bgColor)
-            .foregroundColor(Color.white)
+            .foregroundColor(.brandColor)
             .clipShape(Circle())
+            .border(style.borderColor, width: 1)
             .shadow(radius: 5.0)
     }
 }
@@ -52,11 +64,14 @@ struct RoundedButtonImage: View {
                     .font(.caption2)
             }
         }.padding()
-            .frame(width: 100, height: 100, alignment: .center)
+            .frame(width: 60, height: 60, alignment: .center)
             .background(style.bgColor)
-            .foregroundColor(Color.white)
+            .foregroundColor(.brandColor)
             .clipShape(Circle())
-            .shadow(radius: 5.0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(.thinMaterial, lineWidth: 1)
+            )
     }
 }
 

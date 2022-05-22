@@ -9,29 +9,30 @@ import SwiftUI
 import Firebase
 
 struct SignInView: View {
-    @State private var userEmail: String = ""
-    @State private var password: String = ""
+    @State private var userEmailData = TextInputViewData(text: "", placeholder: "Email-Id", errorString: nil, type: .email)
+    @State private var passwordData = TextInputViewData(text: "", placeholder: "Password", errorString: nil, type: .password)
     @State private var showLoading: Bool = false
     @EnvironmentObject var router: AppRouter
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Color.white
+
+            Button  {
+                router.go(to: .landing)
+            } label: {
+                RoundedButtonImage(title: .cross, subtitle: nil, style: .tertiary)
+            }.frame(width: 60, height: 60, alignment: .topLeading)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 44)
 
             VStack {
                 Spacer()
-                TextField("Email-Id", text: $userEmail)
-                    .padding()
-                    .background(Color(UIColor.lightGray))
-                    .cornerRadius(8)
-                    .padding([.bottom], 20)
-                    .padding([.horizontal], 16)
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color(UIColor.lightGray))
-                    .cornerRadius(8)
-                    .padding([.bottom], 20)
-                    .padding([.horizontal], 16)
+                TextInputView(data: $userEmailData)
+                    .padding(.vertical)
+                TextInputView(data: $passwordData)
+                    .padding(.vertical)
+
                 Button {
                     login()
                 } label: {
@@ -49,9 +50,25 @@ struct SignInView: View {
 
     }
 
+    private func validate() -> Bool {
+        var error = false
+        if userEmailData.isValid == false {
+            userEmailData.errorString = "Enter a valid email-id."
+            error = true
+        } else {
+            userEmailData.errorString = nil
+        }
+
+        if passwordData.isValid == false {
+            passwordData.errorString = "Valid password has at-least 10 characters."
+            error = true
+        }
+        return !error
+    }
     private func login() {
+        guard validate() else { return }
         showLoading = true
-        Auth.auth().signIn(withEmail: userEmail, password: password) { result, error in
+        Auth.auth().signIn(withEmail: userEmailData.text, password: passwordData.text) { result, error in
             showLoading = false
             if error == nil {
                 router.go(to: .startRun, in: .startRun)

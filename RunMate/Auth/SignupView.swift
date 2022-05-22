@@ -20,8 +20,16 @@ struct SignUpView: View {
     @EnvironmentObject var router: AppRouter
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Color.white
+
+            Button  {
+                router.go(to: .landing)
+            } label: {
+                RoundedButtonImage(title: .cross, subtitle: nil, style: .tertiary)
+            }.frame(width: 60, height: 60, alignment: .topLeading)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 44)
 
             VStack {
                 Spacer()
