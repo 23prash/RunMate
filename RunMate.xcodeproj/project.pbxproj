@@ -32,8 +32,8 @@
 		33E7634526A3F0EC00C112E8 /* RunMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7634426A3F0EC00C112E8 /* RunMateTests.swift */; };
 		33E7634F26A3F0EC00C112E8 /* RunMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7634E26A3F0EC00C112E8 /* RunMateUITests.swift */; };
 		33E7635D26A3F15200C112E8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7635C26A3F15200C112E8 /* LocationService.swift */; };
-		33E7636026A3F88700C112E8 /* RunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7635F26A3F88700C112E8 /* RunView.swift */; };
-		33E7636326A3F93200C112E8 /* RunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7636226A3F93200C112E8 /* RunViewModel.swift */; };
+		33E7636026A3F88700C112E8 /* StartRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7635F26A3F88700C112E8 /* StartRunView.swift */; };
+		33E7636326A3F93200C112E8 /* StartRunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E7636226A3F93200C112E8 /* StartRunViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +83,8 @@
 		33E7634E26A3F0EC00C112E8 /* RunMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMateUITests.swift; sourceTree = "<group>"; };
 		33E7635C26A3F15200C112E8 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		33E7635E26A3F80100C112E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		33E7635F26A3F88700C112E8 /* RunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunView.swift; sourceTree = "<group>"; };
-		33E7636226A3F93200C112E8 /* RunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewModel.swift; sourceTree = "<group>"; };
+		33E7635F26A3F88700C112E8 /* StartRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRunView.swift; sourceTree = "<group>"; };
+		33E7636226A3F93200C112E8 /* StartRunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRunViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				3369523827AA9E2900379B2C /* RunCountDownView.swift */,
-				33E7635F26A3F88700C112E8 /* RunView.swift */,
-				33E7636226A3F93200C112E8 /* RunViewModel.swift */,
+				33E7635F26A3F88700C112E8 /* StartRunView.swift */,
+				33E7636226A3F93200C112E8 /* StartRunViewModel.swift */,
 			);
 			path = StartRun;
 			sourceTree = "<group>";
@@ -402,9 +402,9 @@
 				336D577B27D4C6D800903279 /* TimeService.swift in Sources */,
 				337F6E4F27B3C5EB000003E1 /* SFSymbolImage.swift in Sources */,
 				33C43E5127BA74E30077F01C /* RunDataService.swift in Sources */,
-				33E7636326A3F93200C112E8 /* RunViewModel.swift in Sources */,
+				33E7636326A3F93200C112E8 /* StartRunViewModel.swift in Sources */,
 				3369523427AA983700379B2C /* AppRootView.swift in Sources */,
-				33E7636026A3F88700C112E8 /* RunView.swift in Sources */,
+				33E7636026A3F88700C112E8 /* StartRunView.swift in Sources */,
 				337CC4F627AE7C7A007E3FCD /* CircularGradientView.swift in Sources */,
 				33C43E5827BA799D0077F01C /* Common+Extensions.swift in Sources */,
 				336D578727DE0C4200903279 /* PaceService.swift in Sources */,

@@ -51,7 +51,7 @@ final class AppRouter: ObservableObject {
     private static func prepare(_ screen: Screen) -> AnyView {
         switch screen {
         case .startRun:
-            return AnyView(RunView())
+            return AnyView(StartRunView())
         case .runCountdown:
             return AnyView(RunCountDownView())
         case .runInProgress:

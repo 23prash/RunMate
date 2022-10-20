@@ -1,5 +1,5 @@
 //
-//  RunView.swift
+//  StartRunView.swift
 //  RunMate
 //
 //  Created by Prashant Pukale on 7/18/21.
@@ -9,16 +9,12 @@ import SwiftUI
 import Combine
 import MapKit
 
-struct RunView: View {
-    @State
-    private var milageValue = ""
-    
+struct StartRunView: View {
     @ObservedObject
-    private var viewModel = RunViewModel()
+    private var viewModel = StartRunViewModel()
 
     @EnvironmentObject
     var router: AppRouter
-
     
     // MARK:-
     

@@ -11,7 +11,7 @@ import os.log
 import MapKit
 import SwiftUI
 
-final class RunViewModel: ObservableObject {
+final class StartRunViewModel: ObservableObject {
     private let locationService = LocationService()
     private let permissionService = LocationPermissionService()
     @Published var locationRegion: MKCoordinateRegion = .init()
@@ -19,7 +19,6 @@ final class RunViewModel: ObservableObject {
     private var disposeBag = Set<AnyCancellable>()
     
     func startRun(router: AppRouter) {
-        locationService.stop()
         router.go(to: .runCountdown)
     }
     
