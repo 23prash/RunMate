@@ -20,7 +20,7 @@ final class RunViewModel: ObservableObject {
     
     func startRun(router: AppRouter) {
         locationService.stop()
-        router.go(to: .runCountdown, in: .none)
+        router.go(to: .runCountdown)
     }
     
     func onAppear() {

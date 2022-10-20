@@ -11,7 +11,6 @@ enum Screen {
 enum Tab {
     case startRun
     case history
-    case `none`
 }
 
 struct TabConfig {
@@ -19,7 +18,7 @@ struct TabConfig {
     let viewInHistory: AnyView
     let viewInFullScreen: AnyView?
 
-    func with(view: AnyView, in tab: Tab) -> Self {
+    func with(view: AnyView, in tab: Tab?) -> Self {
         switch tab {
         case .startRun:
             return .init(viewInStartTab: view,
@@ -45,7 +44,7 @@ final class AppRouter: ObservableObject {
                        viewInFullScreen: nil)
     }
 
-    func go(to screen: Screen, in tab: Tab) {
+    func go(to screen: Screen, in tab: Tab? = nil) {
         config = config.with(view: Self.prepare(screen), in: tab)
     }
 

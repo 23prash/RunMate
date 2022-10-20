@@ -20,7 +20,7 @@ struct RunCountDownView: View {
             .onReceive(timer) { _ in
                 count += 1
                 if count > 3 {
-                    router.go(to: .runInProgress, in: .none)
+                    router.go(to: .runInProgress)
                 }
             }
     }
