@@ -85,6 +85,7 @@
 		33E7635E26A3F80100C112E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		33E7635F26A3F88700C112E8 /* StartRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRunView.swift; sourceTree = "<group>"; };
 		33E7636226A3F93200C112E8 /* StartRunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRunViewModel.swift; sourceTree = "<group>"; };
+		FA5940A029373F5A00686481 /* SweatUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SweatUI; path = ../SweatUI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 		3369523227AA982000379B2C /* AppRoot */ = {
 			isa = PBXGroup;
 			children = (
+				33E7633326A3F0EA00C112E8 /* RunMateApp.swift */,
 				3369523327AA983700379B2C /* AppRootView.swift */,
 				3369523527AA984600379B2C /* AppRouter.swift */,
 			);
@@ -160,12 +162,13 @@
 			path = ViewsLibrary;
 			sourceTree = "<group>";
 		};
-		337F6E4B27B34A5F000003E1 /* UtilitiesAndExtensions */ = {
+		337F6E4B27B34A5F000003E1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				337CC4F427AE7C33007E3FCD /* ViewsLibrary */,
 				33C43E5727BA799D0077F01C /* Common+Extensions.swift */,
 			);
-			path = UtilitiesAndExtensions;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		33C43E4D27BA739C0077F01C /* Models */ = {
@@ -179,8 +182,6 @@
 		33C43E5227BA78230077F01C /* History */ = {
 			isa = PBXGroup;
 			children = (
-				33C43E5327BA783C0077F01C /* HistoryView.swift */,
-				33C43E5527BA784A0077F01C /* HistoryViewModel.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -189,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				33E7633226A3F0EA00C112E8 /* RunMate */,
+				FA59409F29373F5A00686481 /* Packages */,
 				33E7634326A3F0EC00C112E8 /* RunMateTests */,
 				33E7634D26A3F0EC00C112E8 /* RunMateUITests */,
 				33E7633126A3F0EA00C112E8 /* Products */,
@@ -208,9 +210,10 @@
 		33E7633226A3F0EA00C112E8 /* RunMate */ = {
 			isa = PBXGroup;
 			children = (
-				33E7636126A3F89100C112E8 /* App */,
+				3369523227AA982000379B2C /* AppRoot */,
+				FA5940A12938874100686481 /* Features */,
 				33E7635B26A3F13600C112E8 /* Services */,
-				337F6E4B27B34A5F000003E1 /* UtilitiesAndExtensions */,
+				337F6E4B27B34A5F000003E1 /* Utilities */,
 				33C43E4D27BA739C0077F01C /* Models */,
 				336D577C27D4D27800903279 /* Resources */,
 				33E7633926A3F0EB00C112E8 /* Preview Content */,
@@ -256,17 +259,40 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		33E7636126A3F89100C112E8 /* App */ = {
+		33E7636126A3F89100C112E8 /* Run */ = {
 			isa = PBXGroup;
 			children = (
-				33E7633326A3F0EA00C112E8 /* RunMateApp.swift */,
-				3369523227AA982000379B2C /* AppRoot */,
 				3369523127AA980C00379B2C /* StartRun */,
 				3369523727AA9DFF00379B2C /* RunInProgress */,
 				33C43E5227BA78230077F01C /* History */,
-				337CC4F427AE7C33007E3FCD /* ViewsLibrary */,
 			);
-			path = App;
+			path = Run;
+			sourceTree = "<group>";
+		};
+		FA59409F29373F5A00686481 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FA5940A029373F5A00686481 /* SweatUI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FA5940A12938874100686481 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				33E7636126A3F89100C112E8 /* Run */,
+				FA5940A2293888A200686481 /* History */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		FA5940A2293888A200686481 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				33C43E5327BA783C0077F01C /* HistoryView.swift */,
+				33C43E5527BA784A0077F01C /* HistoryViewModel.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +383,8 @@
 				Base,
 			);
 			mainGroup = 33E7632726A3F0EA00C112E8;
+			packageReferences = (
+			);
 			productRefGroup = 33E7633126A3F0EA00C112E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

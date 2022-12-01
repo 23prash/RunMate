@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "4e5877425dae5c10792fc9d22d53dc6bf6824dc1",
+        "version" : "3.1.8"
+      }
+    },
+    {
+      "identity" : "mistica-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Telefonica/mistica-ios.git",
+      "state" : {
+        "revision" : "009f64a0bc5135a245b9efa50b18b870160f69f5",
+        "version" : "19.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
