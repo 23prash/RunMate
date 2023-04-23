@@ -2,12 +2,12 @@
 //  RunMateUITests.swift
 //  RunMateUITests
 //
-//  Created by Prashant Pukale on 7/18/21.
+//  Created by macbook on 10/4/2023.
 //
 
 import XCTest
 
-class RunMateUITests: XCTestCase {
+final class RunMateUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,7 +27,6 @@ class RunMateUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
