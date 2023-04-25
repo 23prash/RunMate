@@ -38,6 +38,7 @@ public final class LiveRunService: LiveRunServiceProtcol {
     public func complete() throws {
         try state.transition(to: .complete)
         try locationService.terminate()
+        run?.complete()
     }
     
     public func pause() throws {

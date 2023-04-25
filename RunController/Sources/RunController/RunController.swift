@@ -37,34 +37,73 @@ public final class RunController: ObservableObject {
         try runService?.resume()
     }
     
+    public func complete() throws {
+        try runService?.complete()
+        statsService?.completeRun()
+        run.complete()
+        run.splits = statsService?.kmSplits() ?? []
+    }
+    
     private func updateRun() {
         guard run.isPaused == false else { return }
+        guard run.isCompleted == false else { return }
         guard let statsService = statsService else { return }
         run.duration = runStatsPresenter.present(duration: statsService.duration)
-        run.pace = runStatsPresenter.present(pace: statsService.pace)
+        run.avgPace = runStatsPresenter.present(pace: statsService.avgPace)
         run.distance = runStatsPresenter.present(distance: statsService.distance)
+        run.pace = runStatsPresenter.present(pace: statsService.currentPace)
     }
 }
 
 public struct RunState {
+    public enum State {
+        case notStarted
+        case inProgress(paused: Bool)
+        case finished
+    }
+    
     public internal(set) var duration: String = "-"
     public let durationTitle: String = CopyWriter.duration
     
     public internal(set) var distance: String = "-"
     public let distanceTitle: String = CopyWriter.distanceKm
     
+    public internal(set) var avgPace: String = "-"
+    public let avgPaceTitle: String = CopyWriter.avgPaceKm
+    
     public internal(set) var pace: String = "-"
     public let paceTitle: String = CopyWriter.paceKm
     
-    public internal(set) var isPaused: Bool = false
+    public internal(set) var isPaused: Bool {
+        get {
+            guard case let .inProgress(value) = state else { return false }
+            return value
+        }
+        set {
+            state = .inProgress(paused: newValue)
+        }
+    }
+    
+    public var isCompleted: Bool {
+        guard case .finished = state else { return false }
+        return true
+    }
+    
     public internal(set) var runTitle: String = ""
-    public internal(set) var isStarted: Bool = false
+    
+    public internal(set) var state: RunState.State = .notStarted
     
     public internal(set) var askLocationPermission: Bool = false
+    
+    public var splits: [Pace] = []
     
     public init(){}
     
     mutating func start() {
-        isStarted = true
+        self.state = .inProgress(paused: false)
+    }
+    
+    mutating func complete() {
+        self.state = .finished
     }
 }

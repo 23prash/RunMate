@@ -4,7 +4,7 @@ import Combine
 
 public final class Run {
     private(set) var isPaused: Bool = false
-    private var lastResumeTime: Date = .now
+    public private(set) var lastResumeTime: Date = .now
     private var _duration: TimeInterval = 0
     
     @Published public private(set) var locations: [CLLocation] = []
@@ -22,6 +22,11 @@ public final class Run {
             isPaused.toggle()
         }
         _duration += Date.now.timeIntervalSince(lastResumeTime)
+    }
+    
+    public func complete() {
+        guard !isPaused else { return }
+        pause()
     }
     
     public func resume() {

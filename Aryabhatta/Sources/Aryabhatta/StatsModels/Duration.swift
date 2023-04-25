@@ -13,4 +13,8 @@ extension Duration {
         self.mins = (time / 60) % 60
         self.hours = (time / 3600)
     }
+    
+    func timeInterval() -> TimeInterval {
+        return Double((hours * 3600) + (mins * 60) + secs)
+    }
 }

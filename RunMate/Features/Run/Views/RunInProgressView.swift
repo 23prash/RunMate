@@ -10,7 +10,8 @@ struct RunInProgressView: View {
     private func durationView(_ duration: String, durationTitle: String) -> some View {
         VStack(spacing: .space1x) {
             Text(duration)
-                .font(.title)
+                .font(.system(size: 70, weight: .semibold))
+                .foregroundColor(Theme.primaryBrand)
             Text(durationTitle)
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -20,7 +21,8 @@ struct RunInProgressView: View {
     private func distanceView(_ distance: String, distanceTitle: String) -> some View {
         VStack(spacing: .space1x) {
             Text(distance)
-                .font(.title2)
+                .font(.system(size: 60, weight: .semibold))
+                .foregroundColor(Theme.primaryBrand)
             Text(distanceTitle)
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -30,61 +32,42 @@ struct RunInProgressView: View {
     private func paceView(_ pace: String, paceTitle: String) -> some View {
         VStack(spacing: .space1x) {
             Text(pace)
-                .font(.title2)
+                .font(.system(size: 60, weight: .semibold))
+                .foregroundColor(Theme.primaryBrand)
             Text(paceTitle)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }.frame(maxWidth: .infinity)
     }
     
-    private func runStatsView(_ run: RunState) -> some View {
-        VStack {
-            durationView(run.duration, durationTitle: run.durationTitle)
-                .padding(.top)
-            Divider().padding(.horizontal)
-            HStack {
-                distanceView(run.distance, distanceTitle: run.distanceTitle)
-                Divider()
-                paceView(run.pace, paceTitle: run.paceTitle)
-            }.fixedSize(horizontal: false, vertical: true)
-            Divider().padding(.horizontal)
-        }
-    }
-    
     private func pausePlayView() -> some View {
-        HStack {
-            Button {
-                pause.toggle()
+        HStack(spacing: .space3x) {
+            PlayPauseButton(isPaused: $pause) {
                 viewModel.pause(pause)
-            } label: {
-                ButtonText.primary(pause ? "Resume" : "Pause")
-            }.buttonStyle(SweatUIButtonStyle.primary)
-                .padding()
-
-            Button {
-            } label: {
-                ButtonText.secondary("Finish")
-            }.buttonStyle(SweatUIButtonStyle.secondary)
-                .padding()
+            }.frame(maxWidth: 100, maxHeight: 100)
+            
+            FinishButton {
+                viewModel.complete()
+            }.frame(maxWidth: 100, maxHeight: 100)
         }
     }
     
     var body: some View {
-        ZStack {
-            Map(coordinateRegion: $viewModel.data.location)
-            VStack {
-                runStatsView(viewModel.data.run)
-                    .makeCard(cornerRadius: 20.0)
-                    .safeAreaInset(edge: .top) {
-                        EmptyView().frame(height: 50)
-                    }
-                    .padding(.horizontal)
-                Spacer()
-                pausePlayView()
-                    .frame(maxWidth: .infinity)
-                    .makeCard(cornerRadius: 20)
-                    .padding()
-            }
+        VStack {
+            Spacer()
+            durationView(viewModel.data.run.duration, durationTitle: viewModel.data.run.durationTitle)
+            Divider()
+            distanceView(viewModel.data.run.distance, distanceTitle: viewModel.data.run.distanceTitle)
+            Divider()
+            HStack {
+                paceView(viewModel.data.run.pace, paceTitle: viewModel.data.run.paceTitle)
+                Divider()
+                paceView(viewModel.data.run.avgPace, paceTitle: viewModel.data.run.avgPaceTitle)
+            }.fixedSize(horizontal: false, vertical: true)
+            Divider()
+            Spacer()
+            pausePlayView()
+            Spacer()
         }
     }
 }

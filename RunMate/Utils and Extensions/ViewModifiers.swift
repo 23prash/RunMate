@@ -11,7 +11,7 @@ struct CardViewModifier: ViewModifier {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Theme.primaryBrandColor, lineWidth: 0.5)
+                .stroke(Theme.primaryBrand, lineWidth: 0.5)
             )
     }
 }

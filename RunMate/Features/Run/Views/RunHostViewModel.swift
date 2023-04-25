@@ -4,6 +4,7 @@ import Combine
 import os.log
 import MapKit
 import RunKeeper
+import Aryabhatta
 
 final class RunHostViewModel: ObservableObject {
     private let quoteProvider = QuoteProvider(type: .preRun)
@@ -12,12 +13,10 @@ final class RunHostViewModel: ObservableObject {
         var needsPermission = false
         var runStarted = false
         var run: RunState
-        var location: MKCoordinateRegion = .init()
     }
     @Published var data: Data
     private var cancellable = Set<AnyCancellable>()
     private(set) lazy var runController = RunController()
-    private lazy var locationService = LiveLocationService()
     
     init() {
         self.data = .init(quote: quoteProvider.getQuote(), run: .init())
@@ -31,13 +30,17 @@ final class RunHostViewModel: ObservableObject {
         do {
             try runController.start()
             data.needsPermission = false
-            try locationService.start()
-            locationService.onUpdate = { [weak self] loc in
-                self?.data.location = .init(center: loc.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            }
         } catch {
             os_log("Error: \(error)")
             data.needsPermission = true
+        }
+    }
+    
+    func complete() {
+        do {
+            try runController.complete()
+        } catch {
+            os_log("Error: \(error)")
         }
     }
     
@@ -51,5 +54,9 @@ final class RunHostViewModel: ObservableObject {
         } catch {
             os_log("Error: \(error)")
         }
+    }
+    
+    func format(pace: Pace) -> String {
+        return PaceFormatter().string(for: pace)
     }
 }

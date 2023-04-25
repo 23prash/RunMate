@@ -8,6 +8,7 @@ public enum Theme {
     public static let primaryActionTitle: Color = .white
     public static let secondaryActionTitle: Color = .orange
     
-    public static let primaryBrandColor: Color = .orange
+    public static let primaryBrand: Color = .orange
+    public static let primaryAlert: Color = .red
 }
 
