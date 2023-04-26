@@ -17,7 +17,7 @@ struct MileStoneMarker {
     func satisfied(by meters: Double) -> Bool {
         switch self.kind {
         case let .km(val):
-            return meters >= Double(val*1000)
+            return meters >= Double(val*100)
         case let .mi(val):
             return meters >= Double(val*metersInMile)
         }
@@ -27,11 +27,11 @@ struct MileStoneMarker {
         guard let endDuration = endDuration else { return nil }
         let time = endDuration.timeInterval() - startDuration.timeInterval()
         if let meters = meters {
-            return .init(time: time, meters: meters)
+            return .init(time: time, meters: meters.remainder(dividingBy: 100))
         } else {
             switch self.kind {
             case .km:
-                return .init(time: time, meters: 1000)
+                return .init(time: time, meters: 100)
             case .mi:
                 return .init(time: time, meters: Double(metersInMile))
             }

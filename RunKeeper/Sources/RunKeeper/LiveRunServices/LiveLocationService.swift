@@ -11,7 +11,7 @@ public protocol LiveLocationServiceProtocol: Service, AnyObject {
 }
 
 public enum LiveLocationServiceError: Error {
-    case permissionError(CLAuthorizationStatus)
+    case permissionError(canAsk: Bool)
     case invalidOperation
 }
 
@@ -23,7 +23,9 @@ public final class LiveLocationService: NSObject, LiveLocationServiceProtocol {
     
     public func start() throws {
         try state.transition(to: .start)
-        guard locationManager.authorizationStatus.👍 else { throw LiveLocationServiceError.permissionError(locationManager.authorizationStatus) }
+        guard locationManager.authorizationStatus.👍 else {
+            throw LiveLocationServiceError.permissionError(canAsk: locationManager.authorizationStatus == .notDetermined)
+        }
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self

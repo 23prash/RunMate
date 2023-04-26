@@ -11,7 +11,15 @@ struct RunView: View {
         case .notStarted:
             StartRunView(quote: viewModel.data.quote) {
                 viewModel.didTapStart()
-            }.JMModal(showModal: $viewModel.data.needsPermission, for: [.locationAlways])
+            }.JMModal(showModal: $viewModel.data.askLocationPermission, for: [.locationAlways], autoDismiss: true)
+                .alert(isPresented: $viewModel.data.showAlert, error: viewModel.data.error) { error in
+                    Button(error.primaryAction.title, action: error.primaryAction.handler)
+                    if let secondary = error.secondaryAction {
+                        Button(secondary.title, action: secondary.handler)
+                    }
+                } message: { error in
+                    Text(error.message)
+                }
         case .inProgress:
             RunInProgressView(viewModel: viewModel)
         case .finished:

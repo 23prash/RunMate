@@ -39,8 +39,7 @@ public final class RunStatsProvider {
     }
     
     public func kmSplits() -> [Pace] {
-        markers.compactMap { _marker in
-            var marker = _marker
+        markers.compactMap { marker in
             guard case .km = marker.kind else { return nil }
             return marker.split
         }
@@ -61,11 +60,8 @@ public final class RunStatsProvider {
             var marker = _marker
             guard marker.endIndex == nil else { return marker }
             if marker.tryComplete(meters: metersCovered, duration: duration, endIndex: locations.endIndex) {
-                os_log("Marker completed at %@", metersCovered)
                 if let next = marker.next() {
                     markersToAppend.append(next)
-                } else {
-                    os_log("Invalid state next marker not found.", type: .error)
                 }
             }
             return marker
